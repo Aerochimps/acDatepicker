@@ -1,0 +1,122 @@
+<!doctype html>
+<html class="no-js">
+<head>
+	<meta charset="utf-8"/>
+	<title>ac-dropdown-datepicker: Aerochimps - We make apps fly!</title>
+
+	<!--[if lte IE 8]>
+	<script src="bower_components/html5shiv/dist/html5shiv.js"></script>
+	<![endif]-->
+
+	<!-- Metas -->
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+	<meta name="author" content="Aerochimps" />
+	<meta name="rating" content="general" />
+	<meta name="dcterms.rights" content="Aerochimps" />
+	<meta name="Copyright" content="Aerochimps" />
+	<meta name="dcterms.dateCopyrighted" content="2015" />
+	<meta name="revisit-after" content="1 month" />
+	<link rel="canonical" href="http://aerochimps.com/" />
+	<meta name="google-site-verification" content="" />
+
+	<!-- Meta related to language -->
+	<meta name="description" content="" />
+	<meta name="keywords" content=""/>
+
+	<!-- Web Fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,600italic,400italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="../bower_components/HTML5-Reset/assets/css/reset.css">
+	<link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css">
+
+ 	<!-- Use bootstrap ad dependenci (Pease add to bower and run 'bower install') -->
+	<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="css/appBootstrap.css">
+
+	<!-- styles used in our example. You dont need to lnk it :) -->
+	<link rel="stylesheet" href="css/example.css"> 
+
+	<!-- Stand alone Theme styles -->
+	<link rel="stylesheet" href="css/app.css">
+
+	<!-- Icon Lins -->
+	<!-- Standart Favicon -->
+	<link rel="shortcut icon" type="image/png" href="img/favicon@2x.png"/>
+
+	<!-- Facebook -->
+	<meta property="og:type" content="website"/>
+	<meta property="og:image" content="http://aerochimps.com/img/deviceIcons/aerochimps-facebook-icon.png"/>
+
+	<!-- Meta related to language -->
+	<meta property="og:site_name" content="Aerochimps - We make apps fly!"/>
+	<meta property="og:title" content="Aerochimps - We make apps fly!"/>
+	<meta property="og:url" content=""/>
+	<meta property="og:description" content="E"/>
+</head>
+
+<body ng-app="acDropdownDatepickerDemo" ng-cloak>
+
+<section class="example">
+	<header class="exampleHeader">
+		<div class="wrapper">
+			<h1>
+				<strong>Aerochimps</strong> 
+				<span>ac-dropdown-datepicker</span>
+			</h1>
+		</div><!-- End .wrapper -->
+		<!-- Github ribbon -->
+		<a href="https://github.com/Aerochimps/ac-dropdown-datepicker">
+			<img 
+				style="position: absolute; top: 0; right: 0; border: 0;"
+				src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67"
+				alt="Fork me on GitHub"
+				data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"
+			/>
+		</a>
+	</header><!-- /header -->
+
+	<div class="content">
+		<div class="wrapper">
+
+			<div ng-controller="acDropdownDatepickerDemoCtrl">
+				<div
+					ac-dropdown-datepicker=""
+					options="exampledata"
+					use-font-awesome="true"
+					selected-model="examplemodel"
+					extra-settings="examplesettings"
+					events="exampleevents"
+					 class="acButton"
+				></div>
+
+				<div class="exampleFeedback">
+					{{exampledata}}
+					{{examplemodel}}
+					{{asd}}
+				</div><!-- End .exampleFeedback -->
+
+			</div><!-- End ac-dropdown-datepicker -->
+		</div><!-- End .wrapper -->
+	</div><!-- End .content -->
+
+	<footer class="exampleFooter">
+		<div class="wrapper">
+			<p>This project is handcrafted and maintened by <a target="_blank" href="http://Aerochimps.com">Aerochimps</a></p>
+			<p> with <i class="fa fa-heart" alt="Loooooooooooooooooove" title="Loooooooooooooooooove"></i> in <strong>Florianópolis</strong>, Brasil.</p>
+		</div><!-- End .wrapper -->
+	</footer><!-- End .exampleFooter -->
+
+</section><!-- End .example -->
+
+	<!-- Scripts! :) -->
+	<script src="../bower_components/jquery/dist/jquery.js"></script>
+	<script src="../bower_components/angular/angular.js"></script>
+	<script src="../bower_components/lodash/dist/lodash.compat.js"></script>
+	<script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="../bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.min.js"></script>
+	<script src="../src/ac-dropdown-datepicker.js"></script>
+	<script src="js/app.js"></script>
+</body>
+</html>
