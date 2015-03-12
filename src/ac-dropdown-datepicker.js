@@ -10,25 +10,25 @@
         restrict: 'AE',
 
         scope: {
-          selectedModel: '=',
+          ngModel: '=',
+          minDate: '=',
+          showWeeks: '=',
+          datepickerOptions: '=',
           options: '=',
           extraSettings: '=',
           events: '=',
-          searchFilter: '=?',
           translationTexts: '=',
-          groupBy: '@',
           useFontAwesome:'='
         },
 
         template: function (element, attributes) {
-          var groups = attributes.groupBy ? true : false;
           var iconTag = attributes.useFontAwesome ? 'i' : 'span'
           var iconClass = attributes.useFontAwesome ? 'fa' : 'glyphicon'
 
           var template =  '<div class="multiselect-parent btn-group dropdown-multiselect" ng-class="{active: open && !settings.alwaysOpened}">';
               template += '<button type="button" class="dropdown-toggle" ng-class="settings.buttonClasses" ng-click="toggleDropdown()">{{getButtonText()}}&nbsp;<i class="icon-down"></i></button>';
-              template += '<ul class="dropdown-menu dropdown-menu-form" ng-style="{display: (settings.alwaysOpened || open) ? \'block\' : \'none\', height : settings.scrollable ? settings.scrollableHeight : \'auto\' }" style="overflow: scroll" >';
-              template += '<li><datepicker ng-model="dt" min-date="minDate" show-weeks="false" class="well well-sm"></datepicker></li>'
+              template += '<ul class="dropdown-menu dropdown-menu-form" ng-click="$event.stopPropagation()" ng-style="{display: (settings.alwaysOpened || open) ? \'block\' : \'none\', height : settings.scrollable ? settings.scrollableHeight : \'auto\' }" style="overflow: scroll" >';
+              template += '<li><datepicker ng-model="ngModel" min-date="minDate" show-weeks="showWeeks" datepicker-options="datepickerOptions" ng-keydown="keydown($event)" class="well well-sm"></datepicker></li>'
               template += '</ul>';
               template += '</div>';
           
@@ -49,42 +49,7 @@
               event.stopImmediatePropagation();
           };
 
-          scope.showEdit = function (event) {
-            $(event.currentTarget).parent().hide();
-            $(event.currentTarget).parent().next().show();
-          };
 
-          scope.editingOption = function (event, id) {
-            if (event.keyCode === 13 || event.keyCode === 27) {
-              $(event.currentTarget).parent().parent().hide();
-              $(event.currentTarget).parent().parent().prev().show();
-              if (event.keyCode === 13) { scope.editOption(id, event.currentTarget.value); }
-              event.stopPropagation();
-            }
-          };
-
-          scope.editOption = function (id, value) {
-            _.forEach(scope.options, function (option) {
-              if (option.id === id) { option.label = value; }
-            });
-            if (scope.events.onItemEdit) { scope.events.onItemEdit(id, value); }
-          };
-
-          scope.removeOption = function (event, id) {
-            $(event.currentTarget).parent().hide();
-            // Remove from selected options
-            if (scope.settings.selectionLimit === 1 && scope.selectedModel.id === id) {
-              scope.selectedModel = {};
-            }
-            else if (scope.settings.selectionLimit > 1) {
-              scope.selectedModel = scope.selectedModel.filter(function (option) { return option.id !== id; });
-            }
-            // Remove from options
-            scope.options = scope.options.filter(function (option) { return option.id !== id; });
-            // Remove external event
-            if (scope.events.onItemRemove) { scope.events.onItemRemove(id); }
-            event.stopPropagation();
-          };
 
           scope.externalEvents = {
               onItemSelect: angular.noop,
@@ -103,46 +68,16 @@
               scrollable: false,
               scrollableHeight: '300px',
               closeOnBlur: true,
-              displayProp: 'label',
-              idProp: 'id',
-              externalIdProp: 'id',
-              enableSearch: false,
-              enableNewItem: false,
-              enableEdit: false,
               alwaysOpened: false,
-              noSeparators: false,
-              selectionLimit: 0,
-              showCheckAll: true,
-              showUncheckAll: true,
               closeOnSelect: false,
               buttonClasses: 'btn btn-default',
-              closeOnDeselect: false,
-              groupBy: attributes.groupBy || undefined,
-              groupByTextProvider: null,
-              smartButtonMaxItems: 0,
-              smartButtonTextConverter: angular.noop
+              closeOnDeselect: false
           };
 
           scope.texts = {
-              checkAll: 'Check All',
-              uncheckAll: 'Uncheck All',
-              selectionCount: 'checked',
-              selectionOf: '/',
-              searchPlaceholder: 'Search...',
-              newItemPlaceholder: 'New item',
-              buttonDefaultText: 'Select',
-              dynamicButtonTextSuffix: 'checked'
+              buttonDefaultText: 'Select'
           };
 
-          scope.searchFilter = scope.searchFilter || '';
-
-          if (angular.isDefined(scope.settings.groupBy)) {
-              scope.$watch('options', function (newValue) {
-                  if (angular.isDefined(newValue)) {
-                      scope.orderedItems = $filter('orderBy')(newValue, scope.settings.groupBy);
-                  }
-              });
-          }
 
           angular.extend(scope.settings, scope.extraSettings || []);
           angular.extend(scope.externalEvents, scope.events || []);
@@ -177,16 +112,7 @@
           if (scope.settings.closeOnBlur) {
               $document.on('click', function (e) {
                   var target = e.target.parentElement;
-                  var parentFound = false;
-
-                  while (angular.isDefined(target) && target !== null && !parentFound) {
-                      if (_.contains(target.className.split(' '), 'multiselect-parent') && !parentFound) {
-                          if(target === dropdownTrigger) {
-                              parentFound = true;
-                          }
-                      }
-                      target = target.parentElement;
-                  }
+                  var parentFound = $(target).closest('.multiselect-parent').length > 0;;
 
                   if (!parentFound) {
                       scope.$apply(function () {
@@ -196,84 +122,10 @@
               });
           }
 
-          scope.getGroupTitle = function (groupValue) {
-              if (scope.settings.groupByTextProvider !== null) {
-                  return scope.settings.groupByTextProvider(groupValue);
-              }
-
-              return groupValue;
-          };
-
           scope.getButtonText = function () {
-              if (scope.settings.dynamicTitle && angular.isObject(scope.selectedModel) && (scope.selectedModel.length > 0 || _.keys(scope.selectedModel).length > 0)) {
-                  if (scope.settings.smartButtonMaxItems > 0) {
-                      var itemsText = [];
-
-                      angular.forEach(scope.options, function (optionItem) {
-                          if (scope.isChecked(scope.getPropertyForObject(optionItem, scope.settings.idProp))) {
-                              var displayText = scope.getPropertyForObject(optionItem, scope.settings.displayProp);
-                              var converterResponse = scope.settings.smartButtonTextConverter(displayText, optionItem);
-
-                              itemsText.push(converterResponse ? converterResponse : displayText);
-                          }
-                      });
-
-                      if (scope.selectedModel.length > scope.settings.smartButtonMaxItems) {
-                          itemsText = itemsText.slice(0, scope.settings.smartButtonMaxItems);
-                          itemsText.push('...');
-                      }
-
-                      return itemsText.join(', ');
-                  } else {
-                      var totalSelected;
-
-                      if (scope.singleSelection) {
-                          totalSelected = (scope.selectedModel !== null && angular.isDefined(scope.selectedModel[scope.settings.idProp])) ? 1 : 0;
-                      } else {
-                          totalSelected = angular.isDefined(scope.selectedModel) ? scope.selectedModel.length : 0;
-                      }
-
-                      if (totalSelected === 0) {
-                          return scope.texts.buttonDefaultText;
-                      } else {
-                          return totalSelected + ' ' + scope.texts.dynamicButtonTextSuffix;
-                      }
-                  }
-              } else {
-                  return scope.texts.buttonDefaultText;
-              }
+              return scope.texts.buttonDefaultText;
           };
 
-          scope.getPropertyForObject = function (object, property) {
-              if (angular.isDefined(object) && object.hasOwnProperty(property)) {
-                  return object[property];
-              }
-
-              return '';
-          };
-
-          scope.selectAll = function () {
-              scope.deselectAll(false);
-              scope.externalEvents.onSelectAll();
-
-              angular.forEach(scope.options, function (value) {
-                  scope.setSelectedItem(value[scope.settings.idProp], true);
-              });
-          };
-
-          scope.deselectAll = function (sendEvent) {
-              sendEvent = sendEvent || true;
-
-              if (sendEvent) {
-                  scope.externalEvents.onDeselectAll();
-              }
-
-              if (scope.singleSelection) {
-                  clearObject(scope.selectedModel);
-              } else {
-                  scope.selectedModel.splice(0, scope.selectedModel.length);
-              }
-          };
 
           scope.setSelectedItem = function (id, dontRemove) {
               var findObj = getFindObj(id);
@@ -306,21 +158,6 @@
               }
           };
 
-          scope.isChecked = function (id) {
-              if (scope.singleSelection) {
-                  return scope.selectedModel !== null && angular.isDefined(scope.selectedModel[scope.settings.idProp]) && scope.selectedModel[scope.settings.idProp] === getFindObj(id)[scope.settings.idProp];
-              }
-
-              return _.findIndex(scope.selectedModel, getFindObj(id)) !== -1;
-          };
-
-          scope.onNewItemAddKeyDown = function (event) {
-            if (event.keyCode === 13) {
-              scope.events.onNewItemAdd(scope.newItem);
-              scope.newItem = '';
-              event.preventDefault();
-            }
-          };
 
           scope.externalEvents.onInitDone();
         }

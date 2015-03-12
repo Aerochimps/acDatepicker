@@ -8,10 +8,7 @@
 		.controller('acDropdownDatepickerDemoCtrl', function ($scope) {
 			$scope.examplemodel = [];
 			$scope.$watch('examplemodel', function () { $scope.asd = $scope.examplemodel.id; },true);
-			$scope.exampledata = [
-				{id: 1, label: 'David'},
-				{id: 2, label: 'Jhon'},
-				{id: 3, label: 'Danny'}];
+			$scope.dt = new Date();
 			$scope.examplesettings = {
 				showCheckAll: false,
 				showUncheckAll: false,

@@ -28,11 +28,11 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,600italic,400italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 
 	<!-- CSS -->
-	<link rel="stylesheet" href="../bower_components/HTML5-Reset/assets/css/reset.css">
-	<link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css">
+	<link rel="stylesheet" href="bower_components/HTML5-Reset/assets/css/reset.css">
+	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
 
  	<!-- Use bootstrap ad dependenci (Pease add to bower and run 'bower install') -->
-	<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
 	<link rel="stylesheet" href="css/appBootstrap.css">
 
 	<!-- styles used in our example. You dont need to lnk it :) -->
@@ -83,24 +83,22 @@
 			<div ng-controller="acDropdownDatepickerDemoCtrl">
 				<div
 					ac-dropdown-datepicker=""
-					options="exampledata"
 					use-font-awesome="true"
-					selected-model="examplemodel"
+					ng-model="dt"
+					show-weeks="false"
 					extra-settings="examplesettings"
 					events="exampleevents"
-					 class="acButton"
+					class="acButton"
 				></div>
 
 				<div class="exampleFeedback">
-					{{exampledata}}
-					{{examplemodel}}
-					{{asd}}
+					{{dt}}
 				</div><!-- End .exampleFeedback -->
 
 			</div><!-- End ac-dropdown-datepicker -->
 		</div><!-- End .wrapper -->
 	</div><!-- End .content -->
-
+	
 	<footer class="exampleFooter">
 		<div class="wrapper">
 			<p>This project is handcrafted and maintened by <a target="_blank" href="http://Aerochimps.com">Aerochimps</a></p>
@@ -111,11 +109,11 @@
 </section><!-- End .example -->
 
 	<!-- Scripts! :) -->
-	<script src="../bower_components/jquery/dist/jquery.js"></script>
-	<script src="../bower_components/angular/angular.js"></script>
-	<script src="../bower_components/lodash/dist/lodash.compat.js"></script>
-	<script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
-	<script src="../bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.min.js"></script>
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/lodash/dist/lodash.compat.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.min.js"></script>
 	<script src="../src/ac-dropdown-datepicker.js"></script>
 	<script src="js/app.js"></script>
 </body>
