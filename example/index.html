@@ -31,15 +31,16 @@
 	<link rel="stylesheet" href="bower_components/HTML5-Reset/assets/css/reset.css">
 	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
 
- 	<!-- Use bootstrap ad dependenci (Pease add to bower and run 'bower install') -->
-	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-	<link rel="stylesheet" href="css/appBootstrap.css">
+	<!-- Stand alone Theme scructure and theme -->
+	<link rel="stylesheet" href="css/app.css">
+	<link rel="stylesheet" href="css/appTheme.css">
+
+	<!-- To use bootstrap, please unlink stand alone theme -->
+	<!-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"> -->
+	<!-- <link rel="stylesheet" href="css/appBootstrap.css"> -->
 
 	<!-- styles used in our example. You dont need to lnk it :) -->
 	<link rel="stylesheet" href="css/example.css"> 
-
-	<!-- Stand alone Theme styles -->
-	<link rel="stylesheet" href="css/app.css">
 
 	<!-- Icon Lins -->
 	<!-- Standart Favicon -->
@@ -80,14 +81,15 @@
 	<div class="content">
 		<div class="wrapper">
 
-			<div ng-controller="acDropdownDatepickerDemoCtrl">
-				<ac-dropdown-datepicker
+			<div ng-controller="acDropdownDatepickerDemoCtrl" class="theExample">
+				<div
+					ac-dropdown-datepicker
 					use-font-awesome="true"
 					ng-model="dt"
 					show-weeks="false"
 					events="exampleevents"
 					class="acButton"
-				> </ac-dropdown-datepicker>
+				></div>
 
 				<div class="exampleFeedback">
 					{{dt}}
