@@ -1,6 +1,6 @@
 {
   "name": "ac-dropdown-datepicker",
-  "version": "0.1",
+  "version": "0.2",
   "authors": [
     "Gustavo Maestri <gustavo@aerochimps.com>",
     "Idmar Ramos Junior <idmarjr@aerochimps.com>"
@@ -18,7 +18,7 @@
     "checkbox"
   ],
   "license": "MIT",
-  "main": "src/ac-dropdown-datepicker.js",
+  "main": ["js/ac-dropdown-datepicker.js","css/app.css","css/appBootstrap.css","css/appTheme.css","css/example.css"],
   "ignore": [
   	"app",
   	"dist",
@@ -28,7 +28,7 @@
     "package.json"
   ],
   "dependencies": {
-    "angular": "~1.3.0",
+    "angular": "~1.3.14",
     "lodash": "2.4.1",
     "jquery": "~2.1.3",
     "bootstrap": "~3.3.2",
