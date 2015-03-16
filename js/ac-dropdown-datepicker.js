@@ -24,6 +24,7 @@
               template += '<button type="button" class="dropdown-toggle" ng-class="settings.buttonClasses" ng-click="toggleDropdown()">{{getButtonText()}}&nbsp;<i class="fa fa-caret-down"></i></button>';
               template += '<ul class="dropdown-menu dropdown-menu-form" ng-click="$event.stopPropagation()" ng-style="{display: (settings.alwaysOpened || open) ? \'block\' : \'none\', height : settings.scrollable ? settings.scrollableHeight : \'auto\' }" style="overflow: scroll" >';
               template += '<li><datepicker ng-model="ngModel" min-date="minDate" show-weeks="showWeeks" datepicker-options="datepickerOptions" ng-keydown="keydown($event)" class="well well-sm"></datepicker></li>'
+              template += '<li> <a ng-click="today()">Hoje</a></li>';
               template += '</ul>';
               template += '</div>';
           
@@ -38,6 +39,10 @@
           scope.toggleDropdown = function () {
               scope.open = !scope.open;
           };
+
+          scope.today = function(){
+            scope.ngModel = new Date();
+          }
 
           scope.externalEvents = {
               onItemSelect: angular.noop,
