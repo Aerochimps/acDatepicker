@@ -1,3 +1,4 @@
+.text-center {text-align: center;;}
 /*********************************************************************/
 /* .acButton */
 /*********************************************************************/
@@ -18,8 +19,8 @@
 	background-color: rgba(0,0,0, 0.2);
 }
 
-.acButton:hover  button,
-.acButton .active button {
+.acButton:hover .dropdown-toggle,
+.acButton .active .dropdown-toggle {
 	/* fallback */
 	background-color: rgba(0,0,0, 0.2);
 }
@@ -60,4 +61,83 @@
 .acButtonGroup .acButton {
 	float: left;
 	margin-left: -1px;
+}
+
+/*********************************************************************/
+/* .well */
+/*********************************************************************/
+.well table,
+.well thead,
+.well tbody,
+.well tfoot,
+.well tr,
+.well td {border: none;}
+
+.well table {min-width: 220px;}
+
+.well tr {padding: 5px 0}
+
+.well button{
+	display: inline-block;
+	padding: 0;
+	border-width: 1px;
+	border-style: solid;
+	/* fallback */
+	border-color: transparent;
+	background-color: transparent;
+}
+
+.well button strong {font-weight: normal;}
+
+/*********************************************************************/
+/* .well thead */
+/*********************************************************************/
+.well thead tr:first-child {
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+.well thead th button {
+	padding: 15px;
+	font-size: 1.4em;
+}
+
+.well thead small{
+	display: block;
+	width: 42px;
+	padding: 10px 5px;
+	font-size: 1.4em;
+}
+
+.well thead .pull-left,
+.well thead .pull-right {min-height: 54px;}
+
+.well thead .pull-left i,
+.well thead .pull-right i {}
+
+/*********************************************************************/
+/* .well tbody */
+/*********************************************************************/
+.text-muted {
+	/* fallback */
+	color: rgba(0, 0, 0, 0.2);
+}
+
+.well tbody button {text-align: center;}
+
+.well tbody button > span {
+	display: inline-block;
+	font-size: 1.4em;
+	width: 30px;
+	height: 30px;
+	padding-top: 4px;
+	border-radius: 100%;
+}
+
+.well tbody button:hover > span,
+.well tbody button.active >span {
+	/* fallback */
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0.2);
 }

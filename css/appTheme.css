@@ -10,8 +10,8 @@
 
 .acButton .active > button {border-radius: 3px 3px 0 0;}
 
-.acButton:hover  .dropdown-multiselect >button,
-.acButton .active > button {background-color: #373b41;}
+.acButton:hover .dropdown-toggle,
+.acButton .active .dropdown-toggle {background-color: #373b41;}
 
 /*********************************************************************/
 /* .dropdown-menu */
@@ -28,3 +28,33 @@
 .acButtonGroup .acButton .dropdown-toggle {border-radius: 0;}
 .acButtonGroup .acButton:first-child button {border-radius: 4px 0 0 4px;}
 .acButtonGroup .acButton:last-child button {border-radius: 0 4px 4px 0;}
+
+/*********************************************************************/
+/* .well */
+/*********************************************************************/
+.well button{
+	border-color:; transparent;
+	background-color: transparent;
+}
+
+/*********************************************************************/
+/* .well thead */
+/*********************************************************************/
+.well thead tr:first-child {
+	color: #fff;
+	background-color: #1bc5bb;
+}
+
+.well thead th button {color: #fff;}
+
+/*********************************************************************/
+/* .well tbody */
+/*********************************************************************/
+.text-muted {color: #9c9c9c;}
+.well tbody button > span {border-radius: 100%;}
+
+.well tbody button:hover > span,
+.well tbody button.active >span {
+	color: #fff;
+	background-color: #1bc5bb;
+}
