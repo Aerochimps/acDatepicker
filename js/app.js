@@ -11,18 +11,5 @@
 			$scope.dt = new Date();
 
 
-			$scope.exampleevents = {
-				onNewItemAdd: function (newItem) {
-					var id = $scope.exampledata.length + 1;
-					$scope.exampledata.push({id:id, label:newItem});
-					console.log(newItem);
-				},
-				// onItemEdit: function (id, label) {
-				// 	// debugger;
-				// },
-				// onItemRemove: function (id) {
-				// 	// debugger;
-				// }
-			};
 		});
 })();
