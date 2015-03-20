@@ -1,22 +1,22 @@
 /*********************************************************************/
 /* .acButton */
 /*********************************************************************/
-.acButton .dropdown-toggle {
+.acButton.acDatepicker .dropdown-toggle {
 	border-color: #000;
 	border-radius: 3px;
 	color: #fff;
 	background-color: #454A52;
 }
 
-.acButton .active > button {border-radius: 3px 3px 0 0;}
+.acButton.acDatepicker .active > button {border-radius: 3px 3px 0 0;}
 
-.acButton:hover .dropdown-toggle,
-.acButton .active .dropdown-toggle {background-color: #373b41;}
+.acButton.acDatepicker:hover .dropdown-toggle,
+.acButton.acDatepicker .active .dropdown-toggle {background-color: #373b41;}
 
 /*********************************************************************/
 /* .dropdown-menu */
 /*********************************************************************/
-.acButton .dropdown-menu {
+.acButton.acDatepicker .dropdown-menu {
 	border-color: #000;
 	border-radius: 0 0 3px;
 	background-color: #fff;
@@ -25,9 +25,9 @@
 /*********************************************************************/
 /* .acButtonGroup */
 /*********************************************************************/
-.acButtonGroup .acButton .dropdown-toggle {border-radius: 0;}
-.acButtonGroup .acButton:first-child button {border-radius: 4px 0 0 4px;}
-.acButtonGroup .acButton:last-child button {border-radius: 0 4px 4px 0;}
+.acButtonGroup .acButton.acDatepicker .dropdown-toggle {border-radius: 0;}
+.acButtonGroup .acButton.acDatepicker:first-child button {border-radius: 4px 0 0 4px;}
+.acButtonGroup .acButton.acDatepicker:last-child button {border-radius: 0 4px 4px 0;}
 
 /*********************************************************************/
 /* .well */
