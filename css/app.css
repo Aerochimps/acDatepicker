@@ -2,12 +2,13 @@
 /*********************************************************************/
 /* .acButton */
 /*********************************************************************/
-.acButton {
+.acDatepicker {
 	position: relative;
 	display: inline-block;
+	cursor: pointer;
 }
 
-.acButton .dropdown-toggle {
+.acDatepicker .acButton {
 	font-size: 1.4em;
 	padding: 10px;
 	border-style: solid;
@@ -19,8 +20,8 @@
 	background-color: rgba(0,0,0, 0.2);
 }
 
-.acButton:hover .dropdown-toggle,
-.acButton .active .dropdown-toggle {
+.acDatepicker:hover .acButton,
+.acDatepicker .active .acButton {
 	/* fallback */
 	background-color: rgba(0,0,0, 0.2);
 }
@@ -28,7 +29,7 @@
 /*********************************************************************/
 /* .dropdown-menu */
 /*********************************************************************/
-.acButton .dropdown-menu {
+.acDatepicker .dropdown-menu {
 	position: absolute;
 	top: calc(100% - 1px);
 	left: 0;
@@ -41,7 +42,7 @@
 	background-color: #fff;
 }
 
-.acButton .dropdown-menu li a {
+.acDatepicker .dropdown-menu li a {
 	display: block;
 	font-size: 1.4em;
 }
@@ -64,20 +65,20 @@
 }
 
 /*********************************************************************/
-/* .well */
+/* .acCalendar */
 /*********************************************************************/
-.well table,
-.well thead,
-.well tbody,
-.well tfoot,
-.well tr,
-.well td {border: none;}
+.acCalendar table,
+.acCalendar thead,
+.acCalendar tbody,
+.acCalendar tfoot,
+.acCalendar tr,
+.acCalendar td {border: none;}
 
-.well table {min-width: 220px;}
+.acCalendar table {min-width: 220px;}
 
-.well tr {padding: 5px 0}
+.acCalendar tr {padding: 5px 0}
 
-.well button{
+.acCalendar button{
 	display: inline-block;
 	padding: 0;
 	border-width: 1px;
@@ -87,46 +88,46 @@
 	background-color: transparent;
 }
 
-.well button strong {font-weight: normal;}
+.acCalendar button strong {font-weight: normal;}
 
 /*********************************************************************/
-/* .well thead */
+/* .acCalendar thead */
 /*********************************************************************/
-.well thead tr:first-child {
+.acCalendar thead tr:first-child {
 	color: #fff;
 	background-color: rgba(0, 0, 0, 0.2);
 }
 
 
-.well thead th button {
+.acCalendar thead th button {
 	padding: 15px;
 	font-size: 1.4em;
 }
 
-.well thead small{
+.acCalendar thead small{
 	display: block;
 	width: 42px;
 	padding: 10px 5px;
 	font-size: 1.4em;
 }
 
-.well thead .pull-left,
-.well thead .pull-right {min-height: 54px;}
+.acCalendar thead .pull-left,
+.acCalendar thead .pull-right {min-height: 54px;}
 
-.well thead .pull-left i,
-.well thead .pull-right i {}
+.acCalendar thead .pull-left i,
+.acCalendar thead .pull-right i {}
 
 /*********************************************************************/
-/* .well tbody */
+/* .acCalendar tbody */
 /*********************************************************************/
 .text-muted {
 	/* fallback */
 	color: rgba(0, 0, 0, 0.2);
 }
 
-.well tbody button {text-align: center;}
+.acCalendar tbody button {text-align: center;}
 
-.well tbody button > span {
+.acCalendar tbody button > span {
 	display: inline-block;
 	font-size: 1.4em;
 	width: 30px;
@@ -135,8 +136,8 @@
 	border-radius: 100%;
 }
 
-.well tbody button:hover > span,
-.well tbody button.active >span {
+.acCalendar tbody button:hover > span,
+.acCalendar tbody button.active >span {
 	/* fallback */
 	color: #fff;
 	background-color: rgba(0, 0, 0, 0.2);

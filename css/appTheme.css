@@ -1,22 +1,22 @@
 /*********************************************************************/
 /* .acButton */
 /*********************************************************************/
-.acButton .dropdown-toggle {
+.acDatepicker .acButton {
 	border-color: #000;
 	border-radius: 3px;
 	color: #fff;
 	background-color: #454A52;
 }
 
-.acButton .active > button {border-radius: 3px 3px 0 0;}
+.acDatepicker .active > button {border-radius: 3px 3px 0 0;}
 
-.acButton:hover .dropdown-toggle,
-.acButton .active .dropdown-toggle {background-color: #373b41;}
+.acDatepicker:hover .acButton,
+.acDatepicker .active .acButton {background-color: #373b41;}
 
 /*********************************************************************/
 /* .dropdown-menu */
 /*********************************************************************/
-.acButton .dropdown-menu {
+.acDatepicker .dropdown-menu {
 	border-color: #000;
 	border-radius: 0 0 3px;
 	background-color: #fff;
@@ -25,36 +25,36 @@
 /*********************************************************************/
 /* .acButtonGroup */
 /*********************************************************************/
-.acButtonGroup .acButton .dropdown-toggle {border-radius: 0;}
-.acButtonGroup .acButton:first-child button {border-radius: 4px 0 0 4px;}
-.acButtonGroup .acButton:last-child button {border-radius: 0 4px 4px 0;}
+.acButtonGroup .acDatepicker .acButton {border-radius: 0;}
+.acButtonGroup .acDatepicker:first-child button {border-radius: 4px 0 0 4px;}
+.acButtonGroup .acDatepicker:last-child button {border-radius: 0 4px 4px 0;}
 
 /*********************************************************************/
-/* .well */
+/* .acCalendar */
 /*********************************************************************/
-.well button{
+.acCalendar button{
 	border-color:; transparent;
 	background-color: transparent;
 }
 
 /*********************************************************************/
-/* .well thead */
+/* .acCalendar thead */
 /*********************************************************************/
-.well thead tr:first-child {
+.acCalendar thead tr:first-child {
 	color: #fff;
 	background-color: #1bc5bb;
 }
 
-.well thead th button {color: #fff;}
+.acCalendar thead th button {color: #fff;}
 
 /*********************************************************************/
-/* .well tbody */
+/* .acCalendar tbody */
 /*********************************************************************/
 .text-muted {color: #9c9c9c;}
-.well tbody button > span {border-radius: 100%;}
+.acCalendar tbody button > span {border-radius: 100%;}
 
-.well tbody button:hover > span,
-.well tbody button.active >span {
+.acCalendar tbody button:hover > span,
+.acCalendar tbody button.active >span {
 	color: #fff;
 	background-color: #1bc5bb;
 }

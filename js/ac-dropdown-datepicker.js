@@ -1,99 +1,94 @@
 (function() {
+	'use strict';
+	angular.module('ac-dropdown-datepicker', [])
 
-  'use strict';
+		.directive('acDropdownDatepicker', ['$filter', '$document', function ($filter, $document) {
 
-  angular.module('ac-dropdown-datepicker', [])
+			return {
+				restrict: 'AEC',
+				scope: {
+					ngModel: '=',
+					minDate: '=',
+					showWeeks: '=',
+					datepickerOptions: '=',
+					extraSettings: '=',
+					events: '=',
+					translationTexts: '='
+				},
 
-    .directive('acDropdownDatepicker', ['$filter', '$document', function ($filter, $document) {
-
-      return {
-        restrict: 'AEC',
-        scope: {
-          ngModel: '=',
-          minDate: '=',
-          showWeeks: '=',
-          datepickerOptions: '=',
-          extraSettings: '=',
-          events: '=',
-          translationTexts: '='
-        },
-
-        template: function (element, attributes) {
-
-          var template =  '<div class="multiselect-parent btn-group dropdown-multiselect" ng-class="{active: open && !settings.alwaysOpened}">';
-              template += '<button type="button" class="dropdown-toggle" ng-class="settings.buttonClasses" ng-click="toggleDropdown()">{{getButtonText()}}&nbsp;<i class="fa fa-caret-down"></i></button>';
-              template += '<ul class="dropdown-menu dropdown-menu-form" ng-click="$event.stopPropagation()" ng-style="{display: (settings.alwaysOpened || open) ? \'block\' : \'none\', height : settings.scrollable ? settings.scrollableHeight : \'auto\' }" style="overflow: scroll" >';
-              template += '<li><datepicker ng-model="ngModel" min-date="minDate" show-weeks="showWeeks" datepicker-options="datepickerOptions" ng-keydown="keydown($event)" class="well well-sm"></datepicker></li>'
-              template += '<li> <a ng-click="today()">Hoje</a></li>';
-              template += '</ul>';
-              template += '</div>';
-          
-          return template;
-        },
+				template: function (element, attributes) {
+					var template =  '<div class="multiselect-parent btn-group dropdown-multiselect" ng-class="{active: open && !settings.alwaysOpened}">';
+						template += '<button type="button" class="acButton dropdown-toggle" ng-class="settings.buttonClasses" ng-click="toggleDropdown()">{{getButtonText()}}&nbsp;<i class="fa fa-caret-down"></i></button>';
+						template += '<ul class="dropdown-menu dropdown-menu-form" ng-click="$event.stopPropagation()" ng-style="{display: (settings.alwaysOpened || open) ? \'block\' : \'none\', height : settings.scrollable ? settings.scrollableHeight : \'auto\' }" style="overflow: scroll" >';
+						template += '<li><datepicker ng-model="ngModel" min-date="minDate" show-weeks="showWeeks" datepicker-options="datepickerOptions" ng-keydown="keydown($event)" class="acCalendar well well-sm"></datepicker></li>'
+						template += '<li> <a ng-click="today()">Hoje</a></li>';
+						template += '</ul>';
+						template += '</div>';
+					return template;
+				},
 
 
-        link: function (scope, element, attributes) {
+				link: function (scope, element, attributes) {
 
-          var dropdownTrigger = element.children()[0];
-          
-          scope.toggleDropdown = function () {
-              scope.open = !scope.open;
-          };
+				var dropdownTrigger = element.children()[0];
 
-          scope.today = function(){
-            scope.ngModel = new Date();
-          }
+					scope.toggleDropdown = function () {
+						scope.open = !scope.open;
+					};
 
-          scope.externalEvents = {
-              onItemSelect: angular.noop,
-              onItemDeselect: angular.noop,
-              onSelectAll: angular.noop,
-              onDeselectAll: angular.noop,
-              onInitDone: angular.noop,
-              onMaxSelectionReached: angular.noop,
-              onNewItemAdd: angular.noop,
-              onItemEdit: angular.noop,
-              onItemRemove: angular.noop
-          };
+					scope.today = function(){
+						scope.ngModel = new Date();
+					}
 
-          scope.settings = {
-              scrollable: false,
-              scrollableHeight: '300px',
-              closeOnBlur: true,
-              alwaysOpened: false,
-              closeOnSelect: false,
-              buttonClasses: 'btn btn-default',
-              closeOnDeselect: false
-          };
+					scope.externalEvents = {
+						onItemSelect: angular.noop,
+						onItemDeselect: angular.noop,
+						onSelectAll: angular.noop,
+						onDeselectAll: angular.noop,
+						onInitDone: angular.noop,
+						onMaxSelectionReached: angular.noop,
+						onNewItemAdd: angular.noop,
+						onItemEdit: angular.noop,
+						onItemRemove: angular.noop
+					};
 
-          scope.texts = {
-              buttonDefaultText: 'Select'
-          };
+					scope.settings = {
+						scrollable: false,
+						scrollableHeight: '300px',
+						closeOnBlur: true,
+						alwaysOpened: false,
+						closeOnSelect: false,
+						buttonClasses: 'btn btn-default',
+						closeOnDeselect: false
+					};
 
+					scope.texts = {
+						buttonDefaultText: 'Select'
+					};
 
-          angular.extend(scope.settings, scope.extraSettings || []);
-          angular.extend(scope.externalEvents, scope.events || []);
-          angular.extend(scope.texts, scope.translationTexts);
+					angular.extend(scope.settings, scope.extraSettings || []);
+					angular.extend(scope.externalEvents, scope.events || []);
+					angular.extend(scope.texts, scope.translationTexts);
  
-          if (scope.settings.closeOnBlur) {
-              $document.on('click', function (e) {
-                  var target = e.target.parentElement;
-                  var parentFound = $(target).closest('.multiselect-parent').length > 0;
+					if (scope.settings.closeOnBlur) {
+						$document.on('click', function (e) {
+							var target = e.target.parentElement;
+							var parentFound = $(target).closest('.multiselect-parent').length > 0;
 
-                  if (!parentFound) {
-                      scope.$apply(function () {
-                          scope.open = false;
-                      });
-                  }
-              });
-          }
+							if (!parentFound) {
+								scope.$apply(function () {
+									scope.open = false;
+								});
+							}
+					});
+				}
 
-          scope.getButtonText = function () {
-              return scope.texts.buttonDefaultText;
-          };
+				scope.getButtonText = function () {
+					return scope.texts.buttonDefaultText;
+				};
 
-          scope.externalEvents.onInitDone();
-        }
-      };
-  }]);
+				scope.externalEvents.onInitDone();
+			}
+		};
+	}]);
 })();
