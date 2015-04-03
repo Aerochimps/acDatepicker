@@ -20,6 +20,18 @@
 	background-color: rgba(0,0,0, 0.2);
 }
 
+.acButton .acButtonLabel {
+	display: inline-block;
+	padding-right: 10px;
+}
+
+.acButton .fa-caret-down {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	margin-top: -8px;
+}
+
 .acDatepicker:hover .acButton,
 .acDatepicker .active .acButton {
 	/* fallback */
