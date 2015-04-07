@@ -192,4 +192,7 @@
 .acButtonGroup .acDatepicker {
 	display: block;
 	float: left;
+	margin-left: -1px;
 }
+
+.acButtonGroup .acDatepicker:first-child {margin-left: 0;}
