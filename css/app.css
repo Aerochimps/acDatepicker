@@ -1,20 +1,26 @@
-.text-center {text-align: center;;}
-/*********************************************************************/
-/* .acButton */
-/*********************************************************************/
+/***********************************************************/
+/* .acDatepicker */
+/***********************************************************/
 .acDatepicker {
 	position: relative;
 	display: inline-block;
-	cursor: pointer;
 }
 
+/***********************************************************/
+/* .acDatepicker .acButton */
+/***********************************************************/
 .acDatepicker .acButton {
+	position: relative;
+	display: block;
+	width: 100%;
 	font-size: 1.4em;
 	padding: 10px;
 	border-style: solid;
 	border-width: 1px;
 	font-weight: 400;
 	text-transform: uppercase;
+	text-align: left;
+	cursor: pointer;
 	/* fallback */
 	color: #fff;
 	background-color: rgba(0,0,0, 0.2);
@@ -46,7 +52,6 @@
 	position: absolute;
 	top: calc(100% - 1px);
 	left: 0;
-	min-width: 110px;
 	border-style: solid;
 	border-width: 1px;
 	list-style: none;
@@ -80,6 +85,8 @@
 /*********************************************************************/
 /* .acCalendar */
 /*********************************************************************/
+.acCalendar {margin-bottom: 5px;}
+
 .acCalendar table,
 .acCalendar thead,
 .acCalendar tbody,
@@ -92,13 +99,14 @@
 .acCalendar tr {padding: 5px 0}
 
 .acCalendar button{
-	display: inline-block;
+	display: block;
 	padding: 0;
 	border-width: 1px;
 	border-style: solid;
 	/* fallback */
 	border-color: transparent;
 	background-color: transparent;
+	cursor: pointer;
 }
 
 .acCalendar button strong {font-weight: normal;}
@@ -111,13 +119,15 @@
 	background-color: rgba(0, 0, 0, 0.2);
 }
 
+.acCalendar th,
+.acCalendar td {vertical-align: middle;}
 
-.acCalendar thead th button {
+.acCalendar thead button {
 	padding: 15px;
 	font-size: 1.4em;
 }
 
-.acCalendar thead small{
+.acCalendar tr small{
 	display: block;
 	width: 42px;
 	padding: 10px 5px;
@@ -125,19 +135,11 @@
 }
 
 .acCalendar thead .pull-left,
-.acCalendar thead .pull-right {min-height: 54px;}
-
-.acCalendar thead .pull-left i,
-.acCalendar thead .pull-right i {}
+.acCalendar thead .pull-right {min-height: 50px;}
 
 /*********************************************************************/
 /* .acCalendar tbody */
 /*********************************************************************/
-.text-muted {
-	/* fallback */
-	color: rgba(0, 0, 0, 0.2);
-}
-
 .acCalendar tbody button {text-align: center;}
 
 .acCalendar tbody button > span {
@@ -154,4 +156,32 @@
 	/* fallback */
 	color: #fff;
 	background-color: rgba(0, 0, 0, 0.2);
+}
+
+/*********************************************************************/
+/* .acCalendar tbody */
+/*********************************************************************/
+.text-muted {
+	/* fallback */
+	color: rgba(0, 0, 0, 0.2);
+}
+
+/*********************************************************************/
+/* .acDatepicker .today */
+/*********************************************************************/
+.acDatepicker .today a {
+	display: block;
+	padding: 15px;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: rgba(0,0,0, 0.2);
+	text-align: center;
+	font-size: 1.4em;
+	color: rgba(25, 196, 186, 1);
+}
+
+.acDatepicker .today a:hover {
+	text-decoration: none;
+	color: rgba(255,255,255, 1);
+	background-color: rgba(25, 196, 186, 1);
 }
