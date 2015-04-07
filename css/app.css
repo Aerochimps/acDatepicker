@@ -174,14 +174,22 @@
 	padding: 15px;
 	border-top-width: 1px;
 	border-top-style: solid;
-	border-top-color: rgba(0,0,0, 0.2);
 	text-align: center;
 	font-size: 1.4em;
-	color: rgba(25, 196, 186, 1);
+	/* fallback */
+	color: rgba(0, 0, 0, 1);
 }
 
 .acDatepicker .today a:hover {
 	text-decoration: none;
-	color: rgba(255,255,255, 1);
-	background-color: rgba(25, 196, 186, 1);
+	/* fallback */
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+/*********************************************************************/
+/* .acButtonGroup */
+/*********************************************************************/
+.acButtonGroup .acDatepicker {
+	display: block;
+	float: left;
 }

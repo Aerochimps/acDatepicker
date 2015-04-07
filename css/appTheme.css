@@ -23,13 +23,6 @@
 }
 
 /*********************************************************************/
-/* .acButtonGroup */
-/*********************************************************************/
-.acButtonGroup .acDatepicker .acButton {border-radius: 0;}
-.acButtonGroup .acDatepicker:first-child button {border-radius: 4px 0 0 4px;}
-.acButtonGroup .acDatepicker:last-child button {border-radius: 0 4px 4px 0;}
-
-/*********************************************************************/
 /* .acCalendar */
 /*********************************************************************/
 .acCalendar button{
@@ -58,3 +51,23 @@
 	color: #fff;
 	background-color: #1bc5bb;
 }
+
+/*********************************************************************/
+/* .acDatepicker .today */
+/*********************************************************************/
+.acDatepicker .today a {
+	border-top-color: rgba(0,0,0, 0.2);
+	color: rgba(25, 196, 186, 1);
+}
+
+.acDatepicker .today a:hover {
+	color: rgba(255,255,255, 1);
+	background-color: rgba(25, 196, 186, 1);
+}
+
+/*********************************************************************/
+/* .acButtonGroup */
+/*********************************************************************/
+.acButtonGroup .acDatepicker .acButton {border-radius: 0;}
+.acButtonGroup .acDatepicker:first-child button {border-radius: 4px 0 0 4px;}
+.acButtonGroup .acDatepicker:last-child button {border-radius: 0 4px 4px 0;}
