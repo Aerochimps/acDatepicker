@@ -94,8 +94,41 @@
 				<div class="exampleFeedback">
 					{{dt}}
 				</div><!-- End .exampleFeedback -->
+			</div><!-- End theExample -->
 
-			</div><!-- End ac-dropdown-datepicker -->
+			<div ng-controller="acDropdownDatepickerDemoCtrl" class="theExample">
+				<div class="acButtonGroup cf">
+					<div
+						ac-dropdown-datepicker
+						use-font-awesome="true"
+						ng-model="dt"
+						show-weeks="false"
+						events="exampleevents"
+						class="acDatepicker"
+					></div>
+					<div
+						ac-dropdown-datepicker
+						use-font-awesome="true"
+						ng-model="dt"
+						show-weeks="false"
+						events="exampleevents"
+						class="acDatepicker"
+					></div>
+					<div
+						ac-dropdown-datepicker
+						use-font-awesome="true"
+						ng-model="dt"
+						show-weeks="false"
+						events="exampleevents"
+						class="acDatepicker"
+					></div>
+				</div><!-- End .acButtonGroup -->
+
+				<div class="exampleFeedback">
+					{{dt}}
+				</div><!-- End .exampleFeedback -->
+			</div><!-- End theExample -->
+
 		</div><!-- End .wrapper -->
 	</div><!-- End .content -->
 	
