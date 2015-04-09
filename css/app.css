@@ -141,7 +141,10 @@
 }
 
 .acCalendar thead .pull-left:hover,
-.acCalendar thead .pull-right:hover {background-color: rgba(0,0,0, 0.1);}
+.acCalendar thead .pull-right:hover {
+	/* fallback */
+	background-color: rgba(0,0,0, 0.1);
+}
 
 .acCalendar thead .pull-left:before,
 .acCalendar thead .pull-right:before {
