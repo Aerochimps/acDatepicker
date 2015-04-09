@@ -135,7 +135,27 @@
 }
 
 .acCalendar thead .pull-left,
-.acCalendar thead .pull-right {min-height: 50px;}
+.acCalendar thead .pull-right {
+	position: relative;
+	min-height: 50px;
+}
+
+.acCalendar thead .pull-left:before,
+.acCalendar thead .pull-right:before {
+	display: block;
+	content: " ";
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	left: 15px;
+	bottom: 15px;
+	font-family: 'FontAwesome';
+	font-size: 1.2em;
+	text-align: center;
+}
+
+.acCalendar thead .pull-left:before {content: "\f0d9"}
+.acCalendar thead .pull-right:before {content: "\f0da"}
 
 /*********************************************************************/
 /* .acCalendar tbody */
