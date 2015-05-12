@@ -19,7 +19,7 @@
 				template: function (element, attributes) {
 					var template =  '<div class="multiselect-parent btn-group dropdown-multiselect" ng-class="{active: open && !settings.alwaysOpened}">';
 						template += '<button type="button" class="acButton dropdown-toggle" ng-class="settings.buttonClasses" ng-click="toggleDropdown()"><span class="acButtonLabel">{{getButtonText()}}&nbsp;</span><i class="fa fa-caret-down"></i></button>';
-						template += '<div class="dropdown-menu dropdown-menu-form" ng-click="$event.stopPropagation()" ng-style="{display: (settings.alwaysOpened || open) ? \'block\' : \'none\', height : settings.scrollable ? settings.scrollableHeight : \'auto\' }" >';
+						template += '<div class="dropdown-menu dropdown-menu-form" ng-click="stopEvent($event)" ng-style="{display: (settings.alwaysOpened || open) ? \'block\' : \'none\', height : settings.scrollable ? settings.scrollableHeight : \'auto\' }" >';
 						template += '<datepicker ng-model="ngModel" min-date="minDate" show-weeks="showWeeks" datepicker-options="datepickerOptions" ng-keydown="keydown($event)" class="acCalendar well well-sm"></datepicker>'
 						template += '<div class="today"><a ng-click="today()">Hoje</a></div>';
 						template += '</div>';
@@ -39,16 +39,24 @@
 						scope.ngModel = new Date();
 					}
 
+					scope.stopEvent = function(event){
+						if (angular.element(event.target.parentElement).attr('role') == undefined) {
+							 event.stopPropagation();
+						}else{
+							var selection = angular.element(event.target.children).text();
+							if (scope.isDay(selection)) {
+									scope.open = false;
+									scope.externalEvents.onItemSelect(scope.ngModel)
+							}else{
+								event.stopPropagation();
+							}
+						}
+					}
+
 					scope.externalEvents = {
 						onItemSelect: angular.noop,
 						onItemDeselect: angular.noop,
-						onSelectAll: angular.noop,
-						onDeselectAll: angular.noop,
-						onInitDone: angular.noop,
-						onMaxSelectionReached: angular.noop,
-						onNewItemAdd: angular.noop,
-						onItemEdit: angular.noop,
-						onItemRemove: angular.noop
+						onInitDone: angular.noop
 					};
 
 					scope.settings = {
@@ -57,8 +65,10 @@
 						closeOnBlur: true,
 						alwaysOpened: false,
 						closeOnSelect: false,
-						buttonClasses: 'btn btn-default',
-						closeOnDeselect: false
+						buttonClasses: 'dropdown-button',
+						closeOnDeselect: false,
+						dynamicTitle: false,
+						dynamicTitleRange:0
 					};
 
 					scope.texts = {
@@ -72,7 +82,7 @@
 					if (scope.settings.closeOnBlur) {
 						$document.on('click', function (e) {
 							var target = e.target.parentElement;
-							var parentFound = $(target).closest('.multiselect-parent').length > 0;
+							var parentFound = $(target).closest('.multiselect-parent.active').length > 0;
 
 							if (!parentFound) {
 								scope.$apply(function () {
@@ -83,9 +93,21 @@
 				}
 
 				scope.getButtonText = function () {
-					return scope.texts.buttonDefaultText;
+					if (scope.settings.dynamicTitle ) {
+						if(scope.settings.dynamicTitleRange > 0){
+							return moment(scope.ngModel).format(angular.element("#dateFormat").val()) + ' - ' + moment(scope.ngModel).add(scope.settings.dynamicTitleRange,'days').format(angular.element("#dateFormat").val());
+						}else{
+							return moment(scope.ngModel).format(angular.element("#dateFormat").val());
+						}
+					}else{
+						return scope.texts.buttonDefaultText;
+					}
 				};
 
+				scope.isDay = function(obj){
+					var number = obj * 1
+					return angular.isNumber(number) && number > 0 && number < 31
+				}
 				scope.externalEvents.onInitDone();
 			}
 		};
