@@ -40,10 +40,11 @@
 					}
 
 					scope.stopEvent = function(event){
-						if (angular.element(event.target.parentElement).attr('role') == undefined) {
+						var role = (event.target.childElementCount > 0)? angular.element(event.target.parentElement).attr('role') : angular.element(event.target.parentElement.parentElement).attr('role')
+						if (role == undefined) {
 							 event.stopPropagation();
 						}else{
-							var selection = angular.element(event.target.children).text();
+							var selection = (event.target.childElementCount > 0)? angular.element(event.target.children).text() : angular.element(event.target).text();
 							if (scope.isDay(selection)) {
 									scope.open = false;
 									scope.externalEvents.onItemSelect(scope.ngModel)
