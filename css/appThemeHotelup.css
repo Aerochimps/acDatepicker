@@ -50,7 +50,7 @@
 .acCalendar tbody button:hover > span,
 .acCalendar tbody button.active >span {
 	color: #fff;
-	background-color: #1bc5bb;
+	background-color: #37CB9B;
 }
 
 /*********************************************************************/
