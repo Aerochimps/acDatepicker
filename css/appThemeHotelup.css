@@ -1,15 +1,75 @@
-/***********************************************************/
-/* .acDatepicker .acButton */
-/***********************************************************/
+/*********************************************************************/
+/* .acButton */
+/*********************************************************************/
 .acDatepicker .acButton {font-size: 1.3em;}
+
+.acDatepicker .acButton {
+	border-color: #000;
+	border-radius: 3px;
+	color: #fff;
+	background-color: #454A52;
+}
+
+.acDatepicker .active > button {border-radius: 3px 3px 0 0;}
+
+.acDatepicker:hover .acButton,
+.acDatepicker .active .acButton {background-color: #373b41;}
+
+/*********************************************************************/
+/* .dropdown-menu */
+/*********************************************************************/
+.acDatepicker .dropdown-menu {
+	border-color: #000;
+	border-radius: 0 0 3px;
+	background-color: #fff;
+}
+
+/*********************************************************************/
+/* .acCalendar */
+/*********************************************************************/
+.acCalendar button{
+	border-color: transparent;
+	background-color: transparent;
+}
 
 /*********************************************************************/
 /* .acCalendar thead */
 /*********************************************************************/
-.acCalendar thead tr:first-child {background-color: #37CB9B;}
+.acCalendar thead tr:first-child {
+	color: #fff;
+	background-color: #37CB9B;
+}
+
+.acCalendar thead th button {color: #fff;}
+
+/*********************************************************************/
+/* .acCalendar tbody */
+/*********************************************************************/
+.text-muted {color: #9c9c9c;}
+.acCalendar tbody button > span {border-radius: 100%;}
+
+.acCalendar tbody button:hover > span,
+.acCalendar tbody button.active >span {
+	color: #fff;
+	background-color: #1bc5bb;
+}
 
 /*********************************************************************/
 /* .acDatepicker .today */
 /*********************************************************************/
-.acDatepicker .today a {color: #37CB9B;}
-.acDatepicker .today a:hover {background-color: #37CB9B;}
+.acDatepicker .today a {
+	border-top-color: rgba(0,0,0, 0.2);
+	color: #37CB9B;
+}
+
+.acDatepicker .today a:hover {
+	color: rgba(255,255,255, 1);
+	background-color: #37CB9B;
+}
+
+/*********************************************************************/
+/* .acButtonGroup */
+/*********************************************************************/
+.acButtonGroup .acDatepicker .acButton {border-radius: 0;}
+.acButtonGroup .acDatepicker:first-child button {border-radius: 4px 0 0 4px;}
+.acButtonGroup .acDatepicker:last-child button {border-radius: 0 4px 4px 0;}
