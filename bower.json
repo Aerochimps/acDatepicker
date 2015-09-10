@@ -1,9 +1,9 @@
 {
 	"name": "ac-dropdown-datepicker",
-	"version": "0.2.24",
+	"version": "0.2.25",
 	"authors": [
 		"Gustavo Maestri <gustavo@aerochimps.com>",
-		"Idmar Ramos Junior <idmarjr@aerochimps.com>"
+		"Idmar Ramos Junior <idmarjr@aerochimps.com>",
 		"Marcela Quint <marcela@aerochimps.com>"
 	],
 	"description": "AngularJS Dropdown Multiselect directive",
