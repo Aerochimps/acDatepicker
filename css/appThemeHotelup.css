@@ -1,9 +1,8 @@
 /*********************************************************************/
 /* .acButton */
 /*********************************************************************/
-.acDatepicker .acButton {font-size: 1.3em;}
-
 .acDatepicker .acButton {
+	font-size: 1.3em;
 	border-color: #000;
 	border-radius: 3px;
 	color: #fff;
@@ -71,5 +70,5 @@
 /* .acButtonGroup */
 /*********************************************************************/
 .acButtonGroup .acDatepicker .acButton {border-radius: 0;}
-.acButtonGroup .acDatepicker:first-child button {border-radius: 4px 0 0 4px;}
-.acButtonGroup .acDatepicker:last-child button {border-radius: 0 4px 4px 0;}
+.acButtonGroup .acDatepicker:first-child button {border-radius: 3px 0 0 3px;}
+.acButtonGroup .acDatepicker:last-child button {border-radius: 0 3px 3px 0;}
