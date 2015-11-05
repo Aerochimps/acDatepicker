@@ -37,6 +37,8 @@
 
 					scope.today = function(){
 						scope.ngModel = new Date();
+						scope.open = false;
+						scope.externalEvents.onItemSelect(scope.ngModel)
 					}
 
 					scope.stopEvent = function(event){
