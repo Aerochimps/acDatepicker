@@ -21,7 +21,7 @@
 						template += '<button type="button" class="acButton dropdown-toggle" ng-class="settings.buttonClasses" ng-click="toggleDropdown()"><span class="acButtonLabel">{{getButtonText()}}&nbsp;</span><i class="fa fa-caret-down"></i></button>';
 						template += '<div class="dropdown-menu dropdown-menu-form" ng-click="stopEvent($event)" ng-style="{display: (settings.alwaysOpened || open) ? \'block\' : \'none\', height : settings.scrollable ? settings.scrollableHeight : \'auto\' }" >';
 						template += '<datepicker ng-model="ngModel" min-date="minDate" show-weeks="showWeeks" datepicker-options="datepickerOptions" ng-keydown="keydown($event)" class="acCalendar well well-sm"></datepicker>'
-						template += '<div class="today"><a ng-click="today()">Hoje</a></div>';
+						template += '<div ng-show="settings.showToday" class="today"><a ng-click="today()">Hoje</a></div>';
 						template += '</div>';
 					return template;
 				},
@@ -71,7 +71,8 @@
 						buttonClasses: 'dropdown-button',
 						closeOnDeselect: false,
 						dynamicTitle: false,
-						dynamicTitleRange:0
+						dynamicTitleRange:0,
+						showToday: false
 					};
 
 					scope.texts = {
