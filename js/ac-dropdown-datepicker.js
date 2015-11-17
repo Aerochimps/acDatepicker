@@ -96,6 +96,10 @@
 					});
 				}
 
+				scope.$watch("extraSettings.dynamicTitleRange",function(newValue,oldValue) {
+		        scope.settings.dynamicTitleRange = newValue;
+		    });
+		    
 				scope.getButtonText = function () {
 					if (scope.settings.dynamicTitle ) {
 						if(scope.settings.dynamicTitleRange > 0){
